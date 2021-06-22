@@ -31,24 +31,24 @@ And('I click on the add button', () => {
 });
 Then('validate the project on the list', () => {
     cy.wait(1000)
-    cy.get(':nth-child(1) > .ConfigurationListHeadWrapper > .saved-project__headline > .saved-project__headline__name > .saved-project__headline__name__text').contains("Project1");
+    cy.get('[class="saved-project__headline__name__text"]').contains('Project1');
 });
 
 Given('that to click on created project', () => {
-    cy.get('div:nth-of-type(1) > .ConfigurationListHeadWrapper.saved-project > .saved-project__headline > span[role="button"]  .svg-icon > .icon-carat > use').click();
+    cy.get('[class="saved-project__headline__name__text"]').contains('Project1').click();
 });    
 When('I click on new simulation button', () => {
     cy.wait(1000);
     cy.get('.saved-project__list .button__label').click();
 });
 And('I click on next button', () => {
-    cy.get('.button.button--accent.button-icon.settings-form__submit').click();
+    cy.get('.button__label').click();
 });
 And('I click on projects button', () => {
     cy.get('.icon-projects > use').click();
 });
 And('I click on expand button', () => {
-    cy.get('div:nth-of-type(1) > .ConfigurationListHeadWrapper.saved-project > .saved-project__headline > span[role=button]  .svg-icon > .icon-carat > use').click();
+    cy.get('[class="saved-project__headline__name__text"]').contains('Project1').click();
 });
 Then('validate the created simulation configuration', () => {
     cy.get('.saved-config--pct-width__title__name > p').should('have.text', 'default simulation');
